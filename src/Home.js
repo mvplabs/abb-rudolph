@@ -1,14 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import { Link } from 'react-router-dom'
-
-const navigation = [
-  { name: 'For Local Governements', href: '#' },
-  { name: 'For the Region', href: '#' },
-  { name: 'About', href: '#' },
-]
 
 export default function Home() {
   return (
@@ -26,12 +17,11 @@ export default function Home() {
                <Link className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10" to="/services">Search services</Link>
               </div>
               <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
-                <a
-                  href="#"
+              <Link to="/implement"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
                 >
                   Implement a service
-                </a>
+                </Link>
               </div>
             </div>
           </div>
