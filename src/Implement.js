@@ -4,6 +4,7 @@ import {v4 as uuidv4} from 'uuid';
 import { QueryManager} from './api/Api';
 import Queries from './api/Queries';
 import { CheckCircleIcon } from '@heroicons/react/solid'
+import { Link } from 'react-router-dom';
 
 export default function Implement(props) {
   const [selectedService, setSelectedService] = useState(null)
@@ -154,12 +155,11 @@ export default function Implement(props) {
                 </div>
                 <div className="mt-4">
                   <div className="-mx-2 -my-1.5 flex">
-                    <button
-                      type="button"
+                    <Link to={`/details/${newService}`} 
                       className="bg-green-50 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
                     >
-                      View status
-                    </button>
+                      View Service
+                    </Link>
                     <button
                       type="button"
                       className="ml-3 bg-green-50 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"

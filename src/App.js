@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./Home";
 import Services from "./Services";
 import Implement from "./Implement";
+import Details from "./Details";
 import { QueryManager } from "./api/Api";
 import { Routes, Route } from "react-router-dom";
 import { Fragment, useState, useEffect } from 'react'
@@ -205,6 +206,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/services" element={<Services services={services} />} />
           <Route path="/implement" element={<Implement services={services} />} />
+          <Route path="/details/:serviceId" element={<Details services={services} />} />
         </Routes>
       </div>
     </div>
