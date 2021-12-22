@@ -1,7 +1,5 @@
-import { getServices } from './api/Api'
-
-export default function Services() {
-  let data = getServices();
+export default function Services(props) {
+  let data = props.services;
   return (
     <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
       <h1 className="text-4xl text-gray-700 mb-4">Services</h1>
@@ -42,12 +40,10 @@ export default function Services() {
                 </tr>
               </thead>
               <tbody>
-                {data.map((data, dataIdx) => (
-                  <tr key={data.email} className={dataIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{data.Naam}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data["Bevoegde overheid"]}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data.Type}</td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{data.role}</td>
+                {data.map((service, serviceIdx) => (
+                  <tr key={service.id} className={serviceIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{service.title}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{service.authority}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                       <a href="#" className="text-indigo-600 hover:text-indigo-900">
                         Edit

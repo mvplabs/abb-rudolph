@@ -2,8 +2,9 @@ import "./App.css";
 import Home from "./Home";
 import Services from "./Services";
 import Implement from "./Implement";
+import { QueryManager } from "./api/Api";
 import { Routes, Route } from "react-router-dom";
-import { Fragment } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 
@@ -13,7 +14,19 @@ const navigation = [
   { name: 'About', href: '#' },
 ]
 
+
+
 function App() {
+  const [services, setServices] = useState([]);
+  useEffect(() => loadData(), []);
+
+  async function loadData() {
+    let ss = await QueryManager.getServices();
+    setServices(ss);
+    console.log("Services loaded");
+    console.log(ss);
+  }
+
   return (
     <div className="relative bg-gray-50 overflow-hidden">
       <div
@@ -189,8 +202,8 @@ function App() {
         </Popover>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/implement" element={<Implement />} />
+          <Route path="/services" element={<Services services={services} />} />
+          <Route path="/implement" element={<Implement services={services} />} />
         </Routes>
       </div>
     </div>

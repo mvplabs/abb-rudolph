@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { getServices } from './api/Api'
 
-export default function Implement() {
-  const [selectedService, setSelectedService] = useState(null)
-  let services = getServices()
+export default function Implement(props) {
+  let services = props.services;
   return (
     <main className="mt-16 mx-auto max-w-7xl px-4 sm:mt-24">
       <div>
@@ -37,7 +35,7 @@ export default function Implement() {
                           defaultValue="Canada"
                         >
                           {services.map((service, serviceIdx) => (
-                            <option key={serviceIdx} >{service.Naam}</option>
+                            <option key={service.id} >{service.title}</option>
                           ))}
                         </select>
                       </div>

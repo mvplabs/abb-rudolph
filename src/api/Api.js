@@ -1,12 +1,25 @@
 import data from '../data/services.json';
-let SERVICES = []
+import axios from "axios";
+import Queries from "./Queries";
 
-function getServices() {
-  if(SERVICES.length === 0) {
-    SERVICES = data.slice(0, 20)
+export const SPARQL_URL = "https://rudolph.xmas-hackaton-2021.s.redpencil.io/sparql"
+
+const config = {
+  headers: {
+    "Accept": "application/sparql-results+json"
   }
-
-  return SERVICES
 }
 
-export { getServices }
+let QueryManager = {
+  getServices: async () => {
+      let response = await axios.post(
+          SPARQL_URL, `query=${encodeURIComponent(Queries.allServices())}`, config
+      )/**/
+      let services = response.data.results.bindings.map((s) => {
+          return {id: s.service.value, title: s.title.value, description: s.description.value, authority: s.authorityName.value}
+      })
+      return services
+  }
+}
+
+export { QueryManager }
