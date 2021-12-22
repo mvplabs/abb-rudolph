@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router';
+import {v4 as uuidv4} from 'uuid';
+import { QueryManager} from './api/Api';
+import Queries from './api/Queries';
+import { Navigate } from 'react-router-dom'
 
 export default function Implement(props) {
   const [selectedService, setSelectedService] = useState(null)
+  const [cost, setCost] = useState(null)
 
   let services = props.services;
   let location = useLocation();
@@ -11,6 +16,27 @@ export default function Implement(props) {
   if(selectedService === null && location.state !== null) {
     parentServiceId = location.state.parentId;
     setSelectedService(services.find(service => service.id === parentServiceId));
+  }
+
+  async function sendData(e) {
+    e.preventDefault();
+    let newServiceId = uuidv4();
+    let costId = uuidv4(); 
+    console.log("Ready to create new service");
+    console.log("Based on: " + selectedService.title);
+    console.log("Cost: " + cost);
+    console.log("New service id: " + newServiceId);
+    console.log("Cost id: " + costId);
+
+    let query = Queries.postService(selectedService, newServiceId, costId, cost);
+
+    console.log("Query")
+    console.log(query)
+
+    let response = await QueryManager.postService(selectedService, newServiceId, costId, cost)
+    return (
+      <Navigate to="/services" state={ {id: newServiceId} } />
+      )
   }
 
   console.log("Parent service: " + parentServiceId);
@@ -32,7 +58,7 @@ export default function Implement(props) {
             </div>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form action="#" method="POST" onSubmit={sendData}>
               <div className="shadow sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div className="grid grid-cols-3 gap-6">
@@ -78,7 +104,24 @@ export default function Implement(props) {
                       Brief description of the selected service.
                     </p>
                   </div>
+
+                  <div className="col-span-6 sm:col-span-3">
+                      <label htmlFor="first-name" className="block text-sm font-medium text-gray-700">
+                        Service cost
+                      </label>
+                      <input
+                        type="number"
+                        name="cost"
+                        id="cost"
+                        onChange={(e) => setCost(parseInt(e.target.value))}
+                        className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                      />
+                      <p className="mt-2 text-sm text-gray-500">
+                       How much does the service cost locally?
+                    </p>
+                    </div>
                 </div>
+
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"

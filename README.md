@@ -4,10 +4,10 @@
 
 - [x] Get a query for all services
 - [x] Show info on the service page (all or the first 50)
-- [] Add actions, including "implement service" and "watch service"
+- [x] Add actions, including "implement service" 
 - [] Complete Implement service screen
-  - [] Add useState for selected service
-  - [] Show details
+  - [x] Add useState for selected service
+  - [x] Show details
   - [] Show additionnal fields (hard coded?)
   - [] Post as linked data
 - [] Add detail page
@@ -15,6 +15,7 @@
   - [] Linked services ("parent" or "childs")
 - [] Improve list page with search
   - [] Per municipality
+- [] Watch service action & page
 
 ### Queries needed
 
