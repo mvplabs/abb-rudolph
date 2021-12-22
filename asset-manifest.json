@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/abb-rudolph/static/css/main.30d06207.css",
-    "main.js": "/abb-rudolph/static/js/main.f1291172.js",
+    "main.css": "/abb-rudolph/static/css/main.a33af8e2.css",
+    "main.js": "/abb-rudolph/static/js/main.c5da2ed5.js",
     "static/js/787.a444ea93.chunk.js": "/abb-rudolph/static/js/787.a444ea93.chunk.js",
     "index.html": "/abb-rudolph/index.html",
-    "main.30d06207.css.map": "/abb-rudolph/static/css/main.30d06207.css.map",
-    "main.f1291172.js.map": "/abb-rudolph/static/js/main.f1291172.js.map",
+    "main.a33af8e2.css.map": "/abb-rudolph/static/css/main.a33af8e2.css.map",
+    "main.c5da2ed5.js.map": "/abb-rudolph/static/js/main.c5da2ed5.js.map",
     "787.a444ea93.chunk.js.map": "/abb-rudolph/static/js/787.a444ea93.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.30d06207.css",
-    "static/js/main.f1291172.js"
+    "static/css/main.a33af8e2.css",
+    "static/js/main.c5da2ed5.js"
   ]
 }
