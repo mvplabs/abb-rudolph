@@ -110,20 +110,15 @@ function App() {
             >
               <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                 <div className="flex items-center justify-between w-full md:w-auto">
-                  <a href="#">
+                  <a href="/abb-rudolph">
                     
                     <img
                       className="h-8 w-auto sm:h-10"
-                      src="https://pic.onlinewebfonts.com/svg/img_550045.png"
+                      src="https://matrix-client.matrix.org/_matrix/media/r0/thumbnail/matrix.org/lMmWeLqpKtdSXZfarCCreOcr?width=800&height=600&method=scale"
                       alt=""
                     />
                     
                   </a>
-                  <img
-                      className="ml-10 h-8 w-auto sm:h-10"
-                      src="https://matrix-client.matrix.org/_matrix/media/r0/download/matrix.org/saoYXAClLJTaXcHbRVBkoBqx"
-                      alt=""
-                    />
                   <div className="-mr-2 flex items-center md:hidden">
                     <Popover.Button className="bg-gray-50 rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                       <span className="sr-only">Open main menu</span>
