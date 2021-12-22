@@ -3,11 +3,12 @@ import { useLocation } from 'react-router';
 import {v4 as uuidv4} from 'uuid';
 import { QueryManager} from './api/Api';
 import Queries from './api/Queries';
-import { Navigate } from 'react-router-dom'
+import { CheckCircleIcon } from '@heroicons/react/solid'
 
 export default function Implement(props) {
   const [selectedService, setSelectedService] = useState(null)
-  const [cost, setCost] = useState(null)
+  const [cost, setCost] = useState(null);
+  const [newService, setNewService] = useState(null);
 
   let services = props.services;
   let location = useLocation();
@@ -34,9 +35,7 @@ export default function Implement(props) {
     console.log(query)
 
     let response = await QueryManager.postService(selectedService, newServiceId, costId, cost)
-    return (
-      <Navigate to="/services" state={ {id: newServiceId} } />
-      )
+    setNewService(newServiceId);
   }
 
   console.log("Parent service: " + parentServiceId);
@@ -141,6 +140,39 @@ export default function Implement(props) {
           <div className="border-t border-gray-200" />
         </div>
       </div>
+
+      { newService && 
+            <div className="rounded-md bg-green-50 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <CheckCircleIcon className="h-5 w-5 text-green-400" aria-hidden="true" />
+              </div>
+              <div className="ml-3">
+                <h3 className="text-sm font-medium text-green-800">New service created</h3>
+                <div className="mt-2 text-sm text-green-700">
+                  <p>Unique id: {newService}</p>
+                </div>
+                <div className="mt-4">
+                  <div className="-mx-2 -my-1.5 flex">
+                    <button
+                      type="button"
+                      className="bg-green-50 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+                    >
+                      View status
+                    </button>
+                    <button
+                      type="button"
+                      className="ml-3 bg-green-50 px-2 py-1.5 rounded-md text-sm font-medium text-green-800 hover:bg-green-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-green-50 focus:ring-green-600"
+                      onClick={() => setNewService(null)}
+                    >
+                      Dismiss
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      }
     </main>
   );
 }
